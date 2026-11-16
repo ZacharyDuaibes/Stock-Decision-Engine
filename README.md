@@ -1,23 +1,43 @@
 # Portfolio Decision Engine
 
-A personal decision-support tool for equity investing.
+**Status: Planning / Early Design**
 
-This is **not** a stock price predictor.  
-It is a system that helps answer practical questions:
+A personal decision-support system for equity investing (not a stock price predictor).
 
-- Should I buy more, hold, trim, or watch?
-- How concentrated is my portfolio across tickers, sectors, and themes?
-- What material events (filings, news) just occurred for my holdings?
-- What happens to my positions under simple scenario shocks?
+The goal is to help answer practical questions such as:
+- How concentrated is my portfolio?
+- What material SEC filings or events just occurred for my holdings?
+- How would simple market shocks affect individual positions and overall risk?
+- Should I Buy / Hold / Trim / Watch?
 
-The goal is better decisions under incomplete information, not forecasting returns.
+### Planned Core Features
+- Portfolio concentration and risk analysis
+- SEC filing ingestion and relevance filtering
+- Simple scenario / shock simulation
+- Clear recommendation layer with supporting evidence
+- Decision logging so I can measure whether the tool actually helps
 
-### Core ideas
-- Start from *my* actual holdings and the questions I actually ask
-- Surface concentration, co-movement, and second-order exposures
-- Ingest recent SEC filings and major events
-- Produce a clear recommendation layer with supporting evidence
-- Log every suggestion vs. what I actually did so I can measure whether the tool helps
+### Planned Tech Stack
+- **Python**
+- **FastAPI**
+- **Strawberry GraphQL**
+- **SQLite**
+- **Redis** (caching + rate limiting)
+- **yfinance** + **Pandas**
 
-### Status
-Early stage. Building the MVP focused on reliable data + usable decision output before adding more sophisticated models.
+### Current Status
+This repository is in the planning and architecture phase.  
+Implementation has not started yet. The focus right now is defining the data model, decision logic, and API shape before writing production code.
+
+### Roadmap (High Level)
+1. Holdings + price data layer
+2. Concentration & basic risk metrics
+3. SEC filing ingestion
+4. Scenario engine
+5. Recommendation + evidence output
+6. GraphQL API + Redis caching
+7. Simple web / CLI interface
+
+---
+
+This is a personal project intended for real use with my own portfolio.
