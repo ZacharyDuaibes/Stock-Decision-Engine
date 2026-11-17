@@ -1,6 +1,6 @@
 # Portfolio Decision Engine
 
-**Status: Planning / Early Design**
+**Status: Early implementation**
 
 A personal decision-support system for equity investing (not a stock price predictor).
 
@@ -26,8 +26,35 @@ The goal is to help answer practical questions such as:
 - **yfinance** + **Pandas**
 
 ### Current Status
-This repository is in the planning and architecture phase.  
-Implementation has not started yet. The focus right now is defining the data model, decision logic, and API shape before writing production code.
+First working piece: load holdings from CSV, rank by weight, and simulate price shocks (`portfolio.py`).
+
+### Usage
+
+Holdings CSV needs `symbol` and `market_value` columns. Sample file: `examples/sample_holdings.csv`.
+
+Rank holdings by weight:
+
+```bash
+python3 portfolio.py examples/sample_holdings.csv
+```
+
+Simulate price shocks:
+
+```bash
+python3 portfolio.py examples/sample_holdings.csv --shock AAA -20 --shock BBB -10
+```
+
+Example output:
+
+```
+Portfolio impact: -13.0%
+Symbol        Before     After   Impact (pp)
+AAA            50.0%     46.0%         -10.0
+BBB            30.0%     31.0%          -3.0
+CCC            20.0%     23.0%          +0.0
+```
+
+`--shock` can be repeated. Percents are relative price changes (e.g. `-20` means −20%). Impact (pp) is each position’s contribution to the portfolio move in percentage points; After is the reweighted share of the portfolio after the shock.
 
 ### Roadmap (High Level)
 1. Holdings + price data layer
